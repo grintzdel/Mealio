@@ -1,0 +1,16 @@
+{
+  "name": "mealio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "build:server": "pnpm --filter api build",
+    "build:web": "pnpm --filter web build",
+    "start:server": "pnpm --filter api start:prod",
+    "start:web": "pnpm --filter web start"
+  },
+  "keywords": [],
+  "author": "grintzdel",
+  "license": "ISC"
+}
