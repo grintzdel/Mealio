@@ -7,9 +7,10 @@ monorepo via pnpm workspaces et une architecture micro-services.
 ## Backend
 
 - NestJS
-- tRPC
 - Zod
+- Prisma
 - PostgreSQL
+- Amazon AWS S3 
 
 ## Frontend
 
