@@ -9,9 +9,20 @@ export type AuthBody = {
     password: string;
 }
 
+export type CreateUser = {
+    email: string;
+    userName: string;
+    password: string;
+}
+
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService, private readonly userService: UserService) {
+    }
+
+    @Post('register')
+    async register(@Body() registerBody: CreateUser) {
+        return await this.authService.register({registerBody});
     }
 
     @Post('login')
