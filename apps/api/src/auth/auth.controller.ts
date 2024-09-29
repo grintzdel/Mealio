@@ -1,4 +1,4 @@
-import {Body, Controller, Post} from '@nestjs/common';
+import {Body, Controller, Get, Post} from '@nestjs/common';
 import {AuthService} from "@api/auth/auth.service";
 
 export type AuthBody = {
@@ -13,7 +13,12 @@ export class AuthController {
 
     @Post('login')
     async login(@Body() authBody: AuthBody) {
-        console.log(authBody);
         return await this.authService.login({authBody});
     }
+
+    @Get()
+    async authenticate() {
+        return;
+    }
+
 }

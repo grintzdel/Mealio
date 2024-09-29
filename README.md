@@ -20,3 +20,4 @@ monorepo via pnpm workspaces et une architecture micro-services.
 ## Hosting
 
 - Railway
+- Neon.tech
