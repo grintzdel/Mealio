@@ -3,6 +3,7 @@ import {AuthBody} from "@api/auth/auth.controller";
 import {PrismaService} from "@api/prisma.service";
 import {hash, compare} from "bcrypt";
 import {JwtService} from "@nestjs/jwt";
+import {UserPayload} from "@api/auth/jwt.strategy";
 
 @Injectable()
 export class AuthService {
@@ -28,7 +29,7 @@ export class AuthService {
         }
 
         return this.authenticateUser({userId: existingUser.id});
-       // const hashPassword = await this.hashPassword({password});
+        // const hashPassword = await this.hashPassword({password});
     }
 
     private async hashPassword({password}: { password: string }) {
@@ -41,8 +42,8 @@ export class AuthService {
         return isPasswordValid;
     }
 
-    private authenticateUser({userId}: { userId: string }) {
-        const payload = {userId};
+    private authenticateUser({userId}: UserPayload) {
+        const payload: UserPayload = {userId};
         return {
             access_token: this.jwtService.sign(payload),
         };
