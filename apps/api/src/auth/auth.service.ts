@@ -1,16 +1,17 @@
 import {Injectable} from '@nestjs/common';
-import {AuthBody, CreateUser} from "@api/auth/auth.controller";
+import {AuthBody} from "@api/auth/auth.controller";
 import {PrismaService} from "@api/prisma.service";
 import {hash, compare} from "bcrypt";
 import {JwtService} from "@nestjs/jwt";
 import {UserPayload} from "@api/auth/jwt.strategy";
+import {CreateUserDto} from "@api/auth/dto/create-user.dto";
 
 @Injectable()
 export class AuthService {
     constructor(private readonly prisma: PrismaService, private readonly jwtService: JwtService) {
     }
 
-    async register({registerBody}: { registerBody: CreateUser }) {
+    async register({registerBody}: { registerBody: CreateUserDto }) {
         const {email, userName, password} = registerBody;
         const existingUser = await this.prisma.user.findUnique({
             where: {

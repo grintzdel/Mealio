@@ -3,15 +3,10 @@ import {AuthService} from "@api/auth/auth.service";
 import {JwtAuthGuard} from "@api/auth/jwt-auth.guard";
 import {RequestWithUser} from "@api/auth/jwt.strategy";
 import {UserService} from "@api/user/user.service";
+import {CreateUserDto} from "@api/auth/dto/create-user.dto";
 
 export type AuthBody = {
     email: string;
-    password: string;
-}
-
-export type CreateUser = {
-    email: string;
-    userName: string;
     password: string;
 }
 
@@ -21,7 +16,7 @@ export class AuthController {
     }
 
     @Post('register')
-    async register(@Body() registerBody: CreateUser) {
+    async register(@Body() registerBody: CreateUserDto) {
         return await this.authService.register({registerBody});
     }
 
